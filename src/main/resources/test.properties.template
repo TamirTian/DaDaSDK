@@ -1,0 +1,5 @@
+app.key=
+app.secret=
+source.id=73753
+shopNo=11047059
+callback=https://b67e3a0a.ngrok.io/api/v1/callback/dada
