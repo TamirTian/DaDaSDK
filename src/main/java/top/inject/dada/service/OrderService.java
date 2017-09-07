@@ -33,7 +33,7 @@ public class OrderService extends DaDaService {
      * @param orderId  第三方订单号
      * @return response
      */
-    public DaDaResponse<DaDaOrder> get(String sourceId, String orderId) {
+    public DaDaResponse<DaDaOrder> get(Long sourceId, String orderId) {
         OrderQueryRequest request = new OrderQueryRequest();
         request.setOrderId(orderId);
 
@@ -57,7 +57,7 @@ public class OrderService extends DaDaService {
      * @param order    订单
      * @return response
      */
-    public DaDaResponse<DaDaTransport> create(String sourceId, DaDaTransportOrder order) {
+    public DaDaResponse<DaDaTransport> create(Long sourceId, DaDaTransportOrder order) {
         OrderCreateRequest request = new OrderCreateRequest();
         try {
             BeanUtils.copyProperties(request, order);
@@ -85,7 +85,7 @@ public class OrderService extends DaDaService {
      * @param order    订单
      * @return response
      */
-    public DaDaResponse<DaDaTransport> recreate(String sourceId, DaDaTransportOrder order) {
+    public DaDaResponse<DaDaTransport> recreate(Long sourceId, DaDaTransportOrder order) {
         OrderRecreateRequest request = new OrderRecreateRequest();
         try {
             BeanUtils.copyProperties(request, order);
@@ -112,7 +112,7 @@ public class OrderService extends DaDaService {
      * @param sourceId 商户
      * @return response
      */
-    public DaDaResponse<DaDaCancelResult> cancel(String sourceId, DaDaCancelOrder order) {
+    public DaDaResponse<DaDaCancelResult> cancel(Long sourceId, DaDaCancelOrder order) {
         OrderCancelRequest request = new OrderCancelRequest();
         try {
             BeanUtils.copyProperties(request, order);
@@ -138,7 +138,7 @@ public class OrderService extends DaDaService {
      * @param sourceId 商户
      * @return response
      */
-    public DaDaResponse<List<DaDaCanceledReason>> getCanceledReasons(String sourceId) {
+    public DaDaResponse<List<DaDaCanceledReason>> getCanceledReasons(Long sourceId) {
         OrderCanceledReasonRequest request = new OrderCanceledReasonRequest();
 
         ResponseContainer container = call(config, sourceId, request);

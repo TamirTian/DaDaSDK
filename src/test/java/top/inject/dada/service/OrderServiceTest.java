@@ -18,7 +18,7 @@ import java.util.UUID;
 public class OrderServiceTest {
     private OrderService orderService;
     private MockService mockService;
-    private String sourceId = ConfigProvider.getSourceId();
+    private Long sourceId = ConfigProvider.getSourceId();
 
     @Before
     public void init() {

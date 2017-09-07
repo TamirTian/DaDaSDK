@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class MerchantServiceTest {
     private MerchantService merchantService;
-    private String sourceId = ConfigProvider.getSourceId();
+    private Long sourceId = ConfigProvider.getSourceId();
 
     @Before
     public void init() {

@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 public class DaDaService {
 
-    ResponseContainer call(Config config, String sourceId, Object biz) {
+    ResponseContainer call(Config config, Long sourceId, Object biz) {
         Request annotation = biz.getClass().getAnnotation(Request.class);
         if (annotation == null) {
             throw new RuntimeException("Not found request annotation");
@@ -24,7 +24,7 @@ public class DaDaService {
         String bizJson = JSONObject.toJSONString(biz);
 
         RequestContainer request = new RequestContainer();
-        request.setSourceId(sourceId);
+        request.setSourceId(sourceId == null ? "" : sourceId.toString());
         request.setBody("{}".equals(bizJson) ? "" : bizJson);
         request.setAppKey(config.getAppKey());
         request.setFormat(config.getFormat());

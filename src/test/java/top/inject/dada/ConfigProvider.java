@@ -23,8 +23,8 @@ public class ConfigProvider {
         return new Config(properties.getProperty("app.key"), properties.getProperty("app.secret"), true);
     }
 
-    public static String getSourceId() {
-        return properties.getProperty("source.id");
+    public static Long getSourceId() {
+        return Long.valueOf(properties.getProperty("source.id"));
     }
 
     public static String getShopNo() {

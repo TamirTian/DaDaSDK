@@ -20,7 +20,7 @@ public class MockService extends DaDaService {
      * @param orderId  订单号
      * @return
      */
-    public DaDaResponse accept(String sourceId, String orderId) {
+    public DaDaResponse accept(Long sourceId, String orderId) {
         AcceptRequest request = new AcceptRequest();
         request.setOrderId(orderId);
 
@@ -36,7 +36,7 @@ public class MockService extends DaDaService {
      * @param orderId  订单号
      * @return
      */
-    public DaDaResponse fetch(String sourceId, String orderId) {
+    public DaDaResponse fetch(Long sourceId, String orderId) {
         FetchRequest request = new FetchRequest();
         request.setOrderId(orderId);
 
@@ -52,7 +52,7 @@ public class MockService extends DaDaService {
      * @param orderId  订单号
      * @return
      */
-    public DaDaResponse finish(String sourceId, String orderId) {
+    public DaDaResponse finish(Long sourceId, String orderId) {
         FinishRequest request = new FinishRequest();
         request.setOrderId(orderId);
 
@@ -68,7 +68,7 @@ public class MockService extends DaDaService {
      * @param orderId  订单号
      * @return
      */
-    public DaDaResponse cancel(String sourceId, String orderId, String reason) {
+    public DaDaResponse cancel(Long sourceId, String orderId, String reason) {
         CancelRequest request = new CancelRequest();
         request.setOrderId(orderId);
         request.setReason(reason);
@@ -85,7 +85,7 @@ public class MockService extends DaDaService {
      * @param orderId  订单号
      * @return
      */
-    public DaDaResponse expire(String sourceId, String orderId) {
+    public DaDaResponse expire(Long sourceId, String orderId) {
         ExpireRequest request = new ExpireRequest();
         request.setOrderId(orderId);
 

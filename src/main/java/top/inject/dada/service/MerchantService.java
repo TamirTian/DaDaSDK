@@ -40,7 +40,7 @@ public class MerchantService extends DaDaService {
         request.setContactPhone(merchant.getContactPhone());
         request.setEmail(merchant.getEmail());
 
-        ResponseContainer container = call(config, "", request);
+        ResponseContainer container = call(config, null, request);
 
         DaDaResponse<Long> response = new DaDaResponse<>(container);
 
@@ -59,7 +59,7 @@ public class MerchantService extends DaDaService {
      * @param store    门店
      * @return response
      */
-    public DaDaResponse<DaDaStore> createStore(String sourceId, DaDaStore store) {
+    public DaDaResponse<DaDaStore> createStore(Long sourceId, DaDaStore store) {
         StoreCreateRequest request = new StoreCreateRequest();
         request.add(store);
 
@@ -86,7 +86,7 @@ public class MerchantService extends DaDaService {
      * @param sourceId 商户
      * @return response
      */
-    public DaDaResponse<List<DaDaCity>> getCities(String sourceId) {
+    public DaDaResponse<List<DaDaCity>> getCities(Long sourceId) {
         CityQueryRequest request = new CityQueryRequest();
 
         ResponseContainer container = call(config, sourceId, request);
