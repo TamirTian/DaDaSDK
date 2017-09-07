@@ -4,13 +4,13 @@ public class DaDaCancelResult {
     /**
      * 扣除的违约金(单位：元)
      */
-    private String deductFee;
+    private Double deductFee;
 
-    public String getDeductFee() {
+    public Double getDeductFee() {
         return deductFee;
     }
 
-    public void setDeductFee(String deductFee) {
+    public void setDeductFee(Double deductFee) {
         this.deductFee = deductFee;
     }
 
