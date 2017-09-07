@@ -1,13 +1,16 @@
 package top.inject.dada.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import top.inject.dada.config.Config;
-import top.inject.dada.model.out.DaDaCity;
 import top.inject.dada.model.in.DaDaMerchant;
+import top.inject.dada.model.in.DaDaStore;
+import top.inject.dada.model.out.DaDaCity;
 import top.inject.dada.protocol.ResponseContainer;
 import top.inject.dada.request.CityQueryRequest;
 import top.inject.dada.request.MerchantCreateRequest;
+import top.inject.dada.request.StoreCreateRequest;
 import top.inject.dada.response.DaDaResponse;
 
 import java.util.List;
@@ -50,10 +53,38 @@ public class MerchantService extends DaDaService {
 
 
     /**
+     * 创建门店
+     *
+     * @param sourceId 商户
+     * @param store    门店
+     * @return response
+     */
+    public DaDaResponse<DaDaStore> createStore(String sourceId, DaDaStore store) {
+        StoreCreateRequest request = new StoreCreateRequest();
+        request.add(store);
+
+        ResponseContainer container = call(config, sourceId, request);
+
+        DaDaResponse<DaDaStore> response = new DaDaResponse<>(container);
+
+        if (response.isSuccessful()) {
+            JSONArray results = JSONObject.parseObject(container.getResult()).getJSONArray("successList");
+            DaDaStore responseStore = results.getObject(0, DaDaStore.class);
+            response.setResult(responseStore);
+        } else {
+            JSONArray results = JSONObject.parseObject(container.getResult()).getJSONArray("failedList");
+            response.setMsg(results.getJSONObject(0).getString("msg"));
+        }
+
+        return response;
+    }
+
+
+    /**
      * 通过接口，获取城市信息列表。
      *
      * @param sourceId 商户
-     * @return
+     * @return response
      */
     public DaDaResponse<List<DaDaCity>> getCities(String sourceId) {
         CityQueryRequest request = new CityQueryRequest();
